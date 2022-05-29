@@ -19,12 +19,14 @@ df = pd.DataFrame(data)
 states = df['State']
 total_pop = df['Population'].sum()
 
-# 
+# create another column with population percentage
 for index, row in df.iterrows():
-    df.at[index, 'Population'] = (row['Population'] * 100 / total_pop)
+    df.at[index, 'Population %'] = (row['Population'] * 100 / total_pop)
 
 # set graph color
 colors = sns.color_palette('colorblind')[0:5]
 
-plt.pie(df['Population'], labels = states, colors = colors)
-plt.savefig("graph/usa_population_by_state.jpeg")
+# output
+plt.pie(df['Population %'], labels = states, colors = colors, textprops={'fontsize':6})
+plt.show()
+#plt.savefig("graph/usa_population_by_state.jpeg")
